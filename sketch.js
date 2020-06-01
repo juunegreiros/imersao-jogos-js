@@ -31,12 +31,12 @@ function preload(){
   bgImg = loadImage("https://raw.githubusercontent.com/juunegreiros/imersao-jogos-js/master/assets/background/1.png");
   bgImg2 = loadImage("https://raw.githubusercontent.com/juunegreiros/imersao-jogos-js/master/assets/background/1.png");
   imagemPersonagem = loadImage("https://raw.githubusercontent.com/juunegreiros/imersao-jogos-js/master/assets/personagens/1/run.png")
-  imagemObstaculo = loadImage('https://raw.githubusercontent.com/juunegreiros/imersao-jogos-js/master/assets/obstaculos/poring.png')
+  imagemObstaculo = loadImage('https://raw.githubusercontent.com/juunegreiros/imersao-jogos-js/master/assets/poring/walk2.png')
   // imagemCoracao = loadImage("assets/heart.png");
 }
 
 function setup() {
-  createCanvas(600, 400);
+  createCanvas(windowWidth, windowHeight);
   x2 = width;
   frameRate(32);
   personagem = new Personagem();
@@ -60,7 +60,7 @@ function draw() {
     noLoop()
   }
   //animacaoGoblins();
-  exibeTotalDeVidas();
+  // exibeTotalDeVidas();
 
   personagem.show();
   personagem.move()

@@ -1,15 +1,3 @@
-//cenario
-let bgImg;
-let x1 = 0;
-let x2;
-let velocidadeCenario = 3;
-
-//personagem
-let personagem;
-let imagemPersonagem;
-let images = [];
-// let fantasiaPersonagem = 1;
-
 //inimigo
 let inimigo;
 let imagesInimigo = [];
@@ -30,7 +18,6 @@ function preload(){
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  x2 = width;
   frameRate(32);
   personagem = new Personagem();
   inimigo = new Inimigo();

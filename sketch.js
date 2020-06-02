@@ -10,12 +10,10 @@ let imagemPersonagem;
 let images = [];
 // let fantasiaPersonagem = 1;
 
-
 //obstaculo
 let obstaculo;
 let imagesObstaculo = [];
 let numeroFantasiaObstaculo = 0;
-
 
 //goblin
 let imagensGoblins = [];
@@ -27,11 +25,23 @@ let velocidadeGoblin = 3;
 let imagemCoracao;
 let totalDeVidas = 3;
 
+//cenas
+let buttton;
+let imagemGameOver;
+let imagemAbertura;
+let cenaAtual = 'abertura'
+const cenas = {
+  abertura,
+  jogo: iniciaJogo
+}
+
 function preload(){
   bgImg = loadImage("https://raw.githubusercontent.com/juunegreiros/imersao-jogos-js/master/assets/background/1.png");
   bgImg2 = loadImage("https://raw.githubusercontent.com/juunegreiros/imersao-jogos-js/master/assets/background/1.png");
   imagemPersonagem = loadImage("https://raw.githubusercontent.com/juunegreiros/imersao-jogos-js/master/assets/personagens/1/run.png")
   imagemObstaculo = loadImage('https://raw.githubusercontent.com/juunegreiros/imersao-jogos-js/master/assets/poring/walk2.png')
+  imagemGameOver = loadImage("https://raw.githubusercontent.com/juunegreiros/imersao-jogos-js/master/assets/gameover.png");
+  imagemAbertura = loadImage("https://raw.githubusercontent.com/juunegreiros/imersao-jogos-js/master/assets/imgAbertura.png");
   // imagemCoracao = loadImage("assets/heart.png");
 }
 
@@ -49,15 +59,34 @@ function keyPressed() {
   }
 }
 
+function mouseClicked() {
+  if(cenaAtual === 'abertura') {
+    mudarCena('jogo')
+  }
+}
+
 function draw() {
+  cenas[cenaAtual]()
+}
+
+function abertura() {
+  image(imagemAbertura,0,0, width, height)
+}
+
+function mudarCena(novaCena) {
+  cenaAtual = novaCena
+}
+
+function iniciaJogo() {
   carregaCenario();
   movimentaCenario();
 
   obstaculo.show()
   obstaculo.move()
 
-  if(personagem.colide(obstaculo)){
-    noLoop()
+  if (personagem.colide(obstaculo)) {
+    image(imagemGameOver, width / 2 - 200, height / 2);
+    noLoop();
   }
   //animacaoGoblins();
   // exibeTotalDeVidas();
@@ -65,7 +94,6 @@ function draw() {
   personagem.show();
   personagem.move()
 }
-
 
 function animacaoGoblins(){
   image(imagensGoblins[numeroFantasiaGoblin], posicaoXGoblin, 215, 200, 200);

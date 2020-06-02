@@ -12,8 +12,6 @@ let images = [];
 function iniciaJogo() {
   cenario.show()
   cenario.move()
-  // carregaCenario()
-  // movimentaCenario()
 
   if (personagem.colide(inimigo)) {
     image(imagemGameOver, width / 2 - 200, height / 2)
@@ -24,6 +22,4 @@ function iniciaJogo() {
   inimigo.move()
   personagem.show()
   personagem.move()
-
-
 }

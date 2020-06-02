@@ -10,23 +10,12 @@ let imagemPersonagem;
 let images = [];
 // let fantasiaPersonagem = 1;
 
-//obstaculo
-let obstaculo;
-let imagesObstaculo = [];
-let numeroFantasiaObstaculo = 0;
-
-//goblin
-let imagensGoblins = [];
-let numeroFantasiaGoblin = 0;
-let posicaoXGoblin = 800;
-let velocidadeGoblin = 3;
-
-//coracao
-let imagemCoracao;
-let totalDeVidas = 3;
+//inimigo
+let inimigo;
+let imagesInimigo = [];
+let numeroFantasiaInimigo = 0;
 
 //cenas
-let buttton;
 let imagemGameOver;
 let imagemAbertura;
 let cenaAtual = 'abertura'
@@ -36,13 +25,7 @@ const cenas = {
 }
 
 function preload(){
-  bgImg = loadImage("https://raw.githubusercontent.com/juunegreiros/imersao-jogos-js/master/assets/background/1.png");
-  bgImg2 = loadImage("https://raw.githubusercontent.com/juunegreiros/imersao-jogos-js/master/assets/background/1.png");
-  imagemPersonagem = loadImage("https://raw.githubusercontent.com/juunegreiros/imersao-jogos-js/master/assets/personagens/1/run.png")
-  imagemObstaculo = loadImage('https://raw.githubusercontent.com/juunegreiros/imersao-jogos-js/master/assets/poring/walk2.png')
-  imagemGameOver = loadImage("https://raw.githubusercontent.com/juunegreiros/imersao-jogos-js/master/assets/gameover.png");
-  imagemAbertura = loadImage("https://raw.githubusercontent.com/juunegreiros/imersao-jogos-js/master/assets/imgAbertura.png");
-  // imagemCoracao = loadImage("assets/heart.png");
+  loadFiles()
 }
 
 function setup() {
@@ -50,7 +33,7 @@ function setup() {
   x2 = width;
   frameRate(32);
   personagem = new Personagem();
-  obstaculo = new Obstaculo();
+  inimigo = new Inimigo();
 }
 
 function keyPressed() {
@@ -62,6 +45,8 @@ function keyPressed() {
 function mouseClicked() {
   if(cenaAtual === 'abertura') {
     mudarCena('jogo')
+  } else {
+    mudarCena('abertura')
   }
 }
 
@@ -69,70 +54,6 @@ function draw() {
   cenas[cenaAtual]()
 }
 
-function abertura() {
-  image(imagemAbertura,0,0, width, height)
-}
-
 function mudarCena(novaCena) {
   cenaAtual = novaCena
-}
-
-function iniciaJogo() {
-  carregaCenario();
-  movimentaCenario();
-
-  obstaculo.show()
-  obstaculo.move()
-
-  if (personagem.colide(obstaculo)) {
-    image(imagemGameOver, width / 2 - 200, height / 2);
-    noLoop();
-  }
-  //animacaoGoblins();
-  // exibeTotalDeVidas();
-
-  personagem.show();
-  personagem.move()
-}
-
-function animacaoGoblins(){
-  image(imagensGoblins[numeroFantasiaGoblin], posicaoXGoblin, 215, 200, 200);
-  numeroFantasiaGoblin++;
-   if (numeroFantasiaGoblin > 27) {
-     numeroFantasiaGoblin = 0;
-   }
-  posicaoXGoblin -= velocidadeGoblin;
-  if (posicaoXGoblin < -400) {
-     posicaoXGoblin = 550;
-   }
-}
-
-// function exibeTotalDeVidas(){
-//   if (totalDeVidas == 3){
-//     image(imagemCoracao, 20, 20, 25, 25);
-//     image(imagemCoracao, 50, 20, 25, 25);
-//     image(imagemCoracao, 80, 20, 25, 25);
-//   } else if (totalDeVidas == 2){
-//     image(imagemCoracao, 20, 20, 25, 25);
-//     image(imagemCoracao, 50, 20, 25, 25);
-//   }  else if (totalDeVidas == 1){
-//     image(imagemCoracao, 20, 20, 25, 25);
-//   }
-// }
-
-function carregaCenario(){
-  image(bgImg, x1, 0, width, height);
-  image(bgImg2, x2, 0, width, height);
-}
-
-function movimentaCenario(){
-  x1 -= velocidadeCenario;
-  x2 -= velocidadeCenario;
-
-  if (x1 < -width){
-    x1 = width;
-  }
-  if (x2 < -width){
-    x2 = width;
-  }
 }

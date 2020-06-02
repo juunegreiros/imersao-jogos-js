@@ -1,4 +1,4 @@
-class Obstaculo {
+class Inimigo {
   constructor() {
     this.largura =  50
     this.altura = 50
@@ -19,7 +19,7 @@ class Obstaculo {
   }
 
   show() {
-    image(imagemObstaculo, this.x, this.y, this.largura, this.altura, this.imagemX, this.imagemY, this.proporcaoX, this.proporcaoY);
+    image(imagemInimigo, this.x, this.y, this.largura, this.altura, this.imagemX, this.imagemY, this.proporcaoX, this.proporcaoY);
 
     this.imagemX+=this.proporcaoX
     if(this.imagemX > this.proporcaoX * 3) {

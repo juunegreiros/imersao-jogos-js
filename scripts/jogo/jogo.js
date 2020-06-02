@@ -3,28 +3,27 @@ let imagemBackground;
 let x1 = 0;
 let x2 = 0;
 let velocidadeCenario = 3;
-
+let cenario
 //personagem
 let personagem;
 let imagemPersonagem;
 let images = [];
 
 function iniciaJogo() {
-  const cenario = new Cenario(imagemBackground)
   cenario.show()
   cenario.move()
   // carregaCenario()
   // movimentaCenario()
 
+  if (personagem.colide(inimigo)) {
+    image(imagemGameOver, width / 2 - 200, height / 2)
+    noLoop()
+  }
+
   inimigo.show()
   inimigo.move()
-  personagem.show();
+  personagem.show()
   personagem.move()
-
-  if (personagem.colide(inimigo)) {
-    image(imagemGameOver, width / 2 - 200, height / 2);
-    noLoop();
-  }
 
 
 }

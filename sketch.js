@@ -19,8 +19,9 @@ function preload(){
 function setup() {
   createCanvas(windowWidth, windowHeight);
   frameRate(32);
-  personagem = new Personagem();
-  inimigo = new Inimigo();
+  personagem = new Personagem()
+  inimigo = new Inimigo()
+  cenario = new Cenario()
 }
 
 function keyPressed() {

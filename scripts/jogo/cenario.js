@@ -1,6 +1,6 @@
 class Cenario {
-  constructor(imagem) {
-    this.imagem = imagem
+  constructor() {
+    this.imagem = imagemBackground
     this.velocidade = 3
     this.x1 = 0
     this.x2 = width

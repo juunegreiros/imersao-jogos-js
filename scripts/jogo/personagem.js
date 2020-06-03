@@ -23,7 +23,7 @@ class Personagem {
     let personagemY = this.y;
     let obstaculoX = obstaculo.x;
     let obstaculoY = obstaculo.y;
-
+    return false
     return collideRectRect(personagemX, personagemY, this.largura * precisao, this.altura * precisao, obstaculoX, obstaculoY, obstaculo.largura * precisao, obstaculo.altura * precisao);
   }
 

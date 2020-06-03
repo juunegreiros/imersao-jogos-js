@@ -20,8 +20,15 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   frameRate(32);
   personagem = new Personagem()
-  inimigos.push(new Inimigo())
-  
+  const inimigoPequeno = new Inimigo(50, 50, 10, -100)
+  inimigoPequeno.sprite(imagemInimigoPequeno, 105, 100, 4, 7)
+
+  const inimigoGrande = new Inimigo(100,100, 10, -500)
+  inimigoGrande.sprite(imagemInimigoPequeno, 105, 100, 4, 7)
+
+  inimigos.push(inimigoPequeno)
+  inimigos.push(inimigoGrande)
+
   cenario = new Cenario()
 }
 

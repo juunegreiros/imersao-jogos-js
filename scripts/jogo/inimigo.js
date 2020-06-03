@@ -1,22 +1,22 @@
 class Inimigo {
-  constructor() {
-    this.largura =  50
-    this.altura = 50
-    this.x = width
+  constructor(largura, altura, velocidade, delay) {
+    this.largura =  largura
+    this.altura = altura
+
+    this.velocidade = velocidade;
+
+    this.delay = delay
+
+    this.x = width - this.delay
     this.y = height - this.altura -20
 
-    this.velocidade = 10;
-
-    this.delay = -100
-
-    // sprite
-    this.imagem = imagemInimigo
-    this.linhas = 4
-    this.colunas = 7
+    this.imagem
+    this.linhas
+    this.colunas
     this.imagemX = 0
     this.imagemY = 0
-    this.larguraImagem = 105
-    this.alturaImagem = 100
+    this.larguraImagem
+    this.alturaImagem
   }
 
   sprite(imagem, larguraImagem, alturaImagem, linhas, colunas){
@@ -27,11 +27,11 @@ class Inimigo {
     this.colunas = colunas
   }
 
-  velocidade(novaVelocidade) {
+  mudaVelocidade(novaVelocidade) {
     this.velocidade = novaVelocidade
   }
 
-  delay(novoValor) {
+  mudaDelay(novoValor) {
     this.delay = novoValor
   }
 

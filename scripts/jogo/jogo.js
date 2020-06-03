@@ -8,6 +8,7 @@ let cenario
 let personagem;
 let imagemPersonagem;
 let images = [];
+let imagemInimigoPequeno
 
 function iniciaJogo() {
   cenario.show()
@@ -22,6 +23,7 @@ function iniciaJogo() {
     inimigo.show()
     inimigo.move()
   })
+
   personagem.show()
   personagem.move()
 }

@@ -1,6 +1,6 @@
 //inimigo
-let inimigo;
-let imagesInimigo = [];
+// let inimigo;
+let inimigos = [];
 let numeroFantasiaInimigo = 0;
 
 //cenas
@@ -20,7 +20,8 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   frameRate(32);
   personagem = new Personagem()
-  inimigo = new Inimigo()
+  inimigos.push(new Inimigo())
+  
   cenario = new Cenario()
 }
 
@@ -33,8 +34,6 @@ function keyPressed() {
 function mouseClicked() {
   if(cenaAtual === 'abertura') {
     mudarCena('jogo')
-  } else {
-    mudarCena('abertura')
   }
 }
 

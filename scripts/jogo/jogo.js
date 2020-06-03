@@ -13,13 +13,15 @@ function iniciaJogo() {
   cenario.show()
   cenario.move()
 
-  if (personagem.colide(inimigo)) {
-    image(imagemGameOver, width / 2 - 200, height / 2)
-    noLoop()
-  }
+  inimigos.forEach(inimigo => {
+    if (personagem.colide(inimigo)) {
+      image(imagemGameOver, width / 2 - 200, height / 2)
+      noLoop()
+    }
 
-  inimigo.show()
-  inimigo.move()
+    inimigo.show()
+    inimigo.move()
+  })
   personagem.show()
   personagem.move()
 }

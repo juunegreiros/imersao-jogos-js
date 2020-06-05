@@ -1,12 +1,11 @@
-class Personagem extends GameObject {
-  constructor(escala) {
-    super();
-    this.recorte = new Recorte(0, 0, 270, 220);
-    this.yInicial = height - this.recorte.altura * escala.y;
-    this.transform = new Transform(20, this.yInicial, escala.x, escala.y);
-    this.altura = this.recorte.altura * this.transform.escala.y;
-    this.largura = this.recorte.largura * this.transform.escala.x;
+class Personagem {
+  constructor(escala, render) {
+    this.transform = new Transform(20, 0, escala.x, escala.y);
+    this.renderizador = render;
+    this.renderizador.setTransform(this.transform);
 
+    this.yInicial = height - this.renderizador.altura;
+    this.transform.posicao.y = this.yInicial;
     this.gravidade = 3;
     this.vy = 0;
   }
@@ -46,15 +45,6 @@ class Personagem extends GameObject {
   }
 
   show() {
-    this.desenhaImagem(imagemPersonagem, this.transform, this.recorte);
-    /*this.imagemX += 220;
-    if (this.imagemX > 220 * 3) {
-      this.imagemX = 0;
-      this.imagemY += 270;
-    }
-    if (this.imagemY > 270 * 3) {
-      this.imagemY = 0;
-    }
-    */
+    this.renderizador.render();
   }
 }

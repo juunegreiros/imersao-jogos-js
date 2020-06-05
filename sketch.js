@@ -23,12 +23,42 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   frameRate(32);
-  personagem = new Personagem(createVector(0.5, 0.5));
-  const inimigoPequeno = new Inimigo(createVector(0.5, 0.5), 10, -100);
-  inimigoPequeno.sprite(imagemInimigoPequeno, 105, 100, 4, 7);
 
-  const inimigoGrande = new Inimigo(createVector(1, 1), 10, -500);
-  inimigoGrande.sprite(imagemInimigoPequeno, 105, 100, 4, 7);
+  const spritePersonagem = new Sprite(
+    imagemPersonagem,
+    new Recorte(0, 0, 270, 220)
+  );
+  const escalaPersonagem = createVector(0.5, 0.5);
+  personagem = new Personagem(escalaPersonagem, spritePersonagem);
+
+  const animacaoInimigo = new Animacao(
+    imagemInimigoPequeno,
+    new Recorte(0, 0, 100, 105),
+    7,
+    4
+  );
+  const animacaoInimigoGrande = new Animacao(
+    imagemInimigoPequeno,
+    new Recorte(0, 0, 100, 105),
+    7,
+    4
+  );
+  const escalaInimigoPequeno = createVector(0.5, 0.5);
+  const escalaInimigoGrande = createVector(1, 1);
+
+  const inimigoPequeno = new Inimigo(
+    escalaInimigoPequeno,
+    animacaoInimigo,
+    10,
+    -100
+  );
+
+  const inimigoGrande = new Inimigo(
+    escalaInimigoGrande,
+    animacaoInimigoGrande,
+    10,
+    -500
+  );
 
   inimigos.push(inimigoPequeno);
   inimigos.push(inimigoGrande);
